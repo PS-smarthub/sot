@@ -6,6 +6,11 @@ export default auth((req) => {
         const newUrl = new URL("/auth/signin", req.nextUrl.origin);
         return Response.redirect(newUrl);
     }
+
+    if(req.auth && req.nextUrl.pathname == "/auth/signin") {
+        const newUrl = new URL("/app", req.nextUrl.origin);
+        return Response.redirect(newUrl);
+    }
 });
 
 export const config = {

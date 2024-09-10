@@ -12,7 +12,8 @@ import {
   SidebarNavMain,
 } from '@/components/dashboard/sidebar'
 import { usePathname } from 'next/navigation'
-import { GearIcon, MixerVerticalIcon } from '@radix-ui/react-icons'
+import { CarIcon } from "lucide-react"
+import { GearIcon, MixerVerticalIcon, DashboardIcon } from '@radix-ui/react-icons'
 
 import { Session } from 'next-auth'
 import { UserDropdown } from './user-dropdown'
@@ -37,11 +38,19 @@ export function MainSidebar({ user }: MainSidebarProps) {
         <SidebarNav>
           <SidebarNavMain>
             <SidebarNavLink href="/app" active={isActive('/app')}>
-              <GearIcon className="w-3 h-3 mr-3" />
-              OS
+              <GearIcon className="w-4 h-4 mr-3" />
+              Ordens de Serviço
+            </SidebarNavLink>
+            <SidebarNavLink href="/app/vehicles">
+              <CarIcon className="w-4 h-4 mr-3" />
+              Veículos
+            </SidebarNavLink>
+            <SidebarNavLink href="/app/projects">
+              <DashboardIcon className="w-4 h-4 mr-3" />
+              Projetos
             </SidebarNavLink>
             <SidebarNavLink href="/app/settings">
-              <MixerVerticalIcon className="w-3 h-3 mr-3" />
+              <MixerVerticalIcon className="w-4 h-4 mr-3" />
               Configurações
             </SidebarNavLink>
           </SidebarNavMain>

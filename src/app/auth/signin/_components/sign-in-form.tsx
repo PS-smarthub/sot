@@ -2,8 +2,6 @@
 
 import { signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import React from 'react'
 import { useForm } from 'react-hook-form'
 
 export function SignInForm() {
@@ -18,21 +16,20 @@ export function SignInForm() {
                 <form onSubmit={handleSubmit} className="w-full max-w-md space-y-8">
                     <div className="text-center">
                         <h2 className="mt-6 text-3xl font-bold tracking-tight">
-                            Faça login na sua conta
+                            Login para funcionários
                         </h2>
                     </div>
-                    <Button className="w-full" type='submit' variant="outline">
-                        Entrar
+                    <Button className="w-full" type='submit' variant="default">
+                        Bosch Login
                     </Button>
                 </form>
             </div>
-            <div className="hidden lg:block lg:w-1/2 relative">
-                <Image
-                    src="/placeholder.svg?height=1080&width=1920"
+            <div className="hidden lg:block lg:w-1/2 relative dark:bg-slate-100">
+                {/* <Image
+                    src={pathImage}
                     alt="Login background"
-                    layout="fill"
-                    objectFit="cover"
-                />
+                    className='object-cover- w-full h-full'
+                /> */}
             </div>
         </div>
     )
