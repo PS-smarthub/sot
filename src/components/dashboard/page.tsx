@@ -9,7 +9,7 @@ export function DashboardPage({
   children,
   className,
 }: DashboardPageGenericProps) {
-  return <section className={cn(["h-screen", className])}>{children}</section>;
+  return <section className={cn(["h-screen relative z-0 flex-1", className])}>{children}</section>;
 }
 
 export function DashboardPageHeader({
