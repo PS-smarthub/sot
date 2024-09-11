@@ -27,7 +27,7 @@ export function RegisterVehicleForm() {
     })
     return (
 
-        <Card className="w-full max-w-5xl ">
+        <Card className="w-full max-w-5xl mx-auto">
             <CardHeader>
                 <CardTitle className="text-2xl">Cadastrar veículo</CardTitle>
                 <CardDescription>Insira as informações corretamente para efetuar o cadastro de um novo veículo.</CardDescription>

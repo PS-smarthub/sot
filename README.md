@@ -24,7 +24,7 @@ Este repositório contém o código de uma plataforma web desenvolvida com Next.
 ## Pré-requisitos
 
 - Node.js v18+
-- NPM ou Yarn
+- NPM ou Pnpm
 - Docker (opcional, para ambientes de desenvolvimento)
 
 ## Instalação

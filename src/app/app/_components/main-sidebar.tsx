@@ -41,15 +41,15 @@ export function MainSidebar({ user }: MainSidebarProps) {
               <GearIcon className="w-4 h-4 mr-3" />
               Ordens de Serviço
             </SidebarNavLink>
-            <SidebarNavLink href="/app/vehicles">
+            <SidebarNavLink href="/app/vehicles" active={isActive('/app/vehicles')}>
               <CarIcon className="w-4 h-4 mr-3" />
               Veículos
             </SidebarNavLink>
-            <SidebarNavLink href="/app/projects">
+            <SidebarNavLink href="/app/projects" active={isActive('/app/projects')}>
               <DashboardIcon className="w-4 h-4 mr-3" />
               Projetos
             </SidebarNavLink>
-            <SidebarNavLink href="/app/settings">
+            <SidebarNavLink href="/app/settings" active={isActive("/app/settings")}>
               <MixerVerticalIcon className="w-4 h-4 mr-3" />
               Configurações
             </SidebarNavLink>
