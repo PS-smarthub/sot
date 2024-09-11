@@ -6,6 +6,5 @@ export default async function Page() {
     const vehicles = await getVehicles()
     return (
         <VehicleDataTable data={vehicles} />
-
     )
 }

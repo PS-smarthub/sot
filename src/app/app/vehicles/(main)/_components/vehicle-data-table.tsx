@@ -3,8 +3,8 @@
 import * as React from "react"
 import {
     CaretSortIcon,
-    DotsHorizontalIcon,
     PlusIcon,
+    Pencil2Icon
 } from "@radix-ui/react-icons"
 import {
     ColumnDef,
@@ -20,14 +20,6 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import {
     Table,
@@ -38,6 +30,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
+import { EditVehicleDialog } from "./edit-vehicle-dialog"
 
 type Vehicle = {
     id: number;
@@ -94,7 +87,7 @@ export const columns: ColumnDef<Vehicle>[] = [
         cell: ({ row }) => {
             const vehicle = row.original
 
-            // const handleDeleteTodo = async (todo: Todo) => {
+            // const handleDeleteVehicle = async (todo: Todo) => {
             //     await deleteTodo({
             //         id: todo.id
             //     })
@@ -103,37 +96,36 @@ export const columns: ColumnDef<Vehicle>[] = [
             //         description: "The todo item has been successfully deleted."
             //     })
             // }
-            // const handleToggleDone = async (todo: Todo) => {
-            //     const doneAt = todo.doneAt ? null : new Date()
-            //     await upsertTodo({ id: todo.id, doneAt })
-            //     toast({
-            //         title: "Update Successful",
-            //         description: "The todo item has been successfully updated."
-            //     })
-            // }
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="link" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <DotsHorizontalIcon className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(vehicle.id.toString())}
-                        >
-                            Copiar ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem
-                        // onClick={() => handleDeleteVehicle(vehicle)}
-                        >
-                            Apagar
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                // <DropdownMenu>
+                //     <DropdownMenuTrigger asChild>
+                //         <Button variant="link" className="h-8 w-8 p-0">
+                //             <span className="sr-only">Open menu</span>
+                //             <DotsHorizontalIcon className="h-4 w-4" />
+                //         </Button>
+                //     </DropdownMenuTrigger>
+                //     <DropdownMenuContent align="end" className="dark:bg-[#1a1a1a]">
+                //         <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                //         <DropdownMenuItem className="gap-2">
+                //             <EditVehicleDialog vehicle={vehicle}>
+                //                 <Pencil2Icon className="w-4 h-4" />
+                //                 Editar
+                //             </EditVehicleDialog>
+                //         </DropdownMenuItem>
+                //         <DropdownMenuSeparator />
+                //         <DropdownMenuItem
+                //         // onClick={() => handleDeleteVehicle(vehicle)}
+                //         >
+
+                //             Apagar
+                //         </DropdownMenuItem>
+                //     </DropdownMenuContent>
+                // </DropdownMenu>
+                <EditVehicleDialog vehicle={vehicle}>
+                    <Button variant="ghost">
+                        <Pencil2Icon className="w-4 h-4" />
+                    </Button>
+                </EditVehicleDialog>
             )
         },
     },
