@@ -10,7 +10,7 @@ export function Sidebar({ children, className }: SidebarGenericProps) {
   return (
     <aside
       className={cn([
-        'border-r border-border flex flex-col space-y-6',
+        'border-r flex flex-col space-y-6 border-border bg-muted max-h-screen',
         className,
       ])}
     >

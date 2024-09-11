@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Service Order Tool
 
-## Getting Started
+Este repositório contém o código de uma plataforma web desenvolvida com Next.js para o front-end, que tem como objetivo facilitar a gestão de uma oficina, possibilitando a criação e o gerenciamento de ordens de serviço, veículos e projetos.
 
-First, run the development server:
+## Funcionalidades
+
+- Ordens de Serviço: Criação, visualização, edição e exclusão de ordens de serviço, com controle do status de cada tarefa.
+
+- Gestão de Veículos: Registro de veículos com informações detalhadas, como fabricante, modelo, ano, número do chassi, entre outros.
+- Gerenciamento de Projetos: Acompanhe os projetos da oficina, associando veículos e ordens de serviço a cada projeto.
+- Interface Amigável: Design moderno e responsivo utilizando Tailwind CSS.
+- Autenticação: Sistema de autenticação para controlar o acesso de usuários.
+
+## Tecnologias Utilizadas
+
+- Next.js: Framework de React para renderização do front-end e geração de páginas dinâmicas.
+
+- Tailwind CSS: Biblioteca de CSS utilitária para criação de interfaces responsivas e customizáveis.
+
+- Docker: Para criar e gerenciar os containers de desenvolvimento.
+
+- MSSQL: Banco de dados para armazenar os dados
+
+## Pré-requisitos
+
+- Node.js v18+
+- NPM ou Yarn
+- Docker (opcional, para ambientes de desenvolvimento)
+
+## Instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/PS-smarthub/sot.git
+cd seu-repositorio
+```
+
+2. Instale as dependências:
+
+```bash Copiar Código
+npm install
+```
+
+ou, se estimer usando pnpm
+
+```bash Copiar Código
+pnpm install
+```
+
+3. Configure as variáveis de ambiente:
+
+Crie um arquivo .env.local na raiz do projeto e configure as variáveis de ambiente necessárias para o banco de dados, autenticação e outras integrações. Exemplo:
+
+```bash
+DATABASE_URL=mongodb://localhost:27017/oficina
+NEXTAUTH_URL=http://localhost:3000
+```
+
+4. Inicie o ambiente de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ou com pnpm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Acesse a aplicação em http://localhost:3000.
 
-## Learn More
+## Utilização
 
-To learn more about Next.js, take a look at the following resources:
+Após iniciar o ambiente de desenvolvimento, você poderá acessar a plataforma e:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Criar novas ordens de serviço, atribuir status e acompanhar o progresso.
+- dicionar veículos à oficina e editar seus detalhes.
+- Gerenciar projetos, associando ordens de serviço e veículos a cada um deles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura do Projeto
 
-## Deploy on Vercel
+Abaixo está um resumo da estrutura de pastas do projeto:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── components       # Componentes reutilizáveis de UI
+├── app            # Páginas do Next.js (rotas da aplicação)
+│   ├── api          # API routes para o backend
+│   ├── app     # Página inicial da aplicação (Ordens de Serviço)
+│   ├── vehicles     # Página de gerenciamento de veículos
+│   ├── projects     # Página de gerenciamento de projetos
+│   └── settings       # Página de configuração
+├── public           # Arquivos públicos (imagens, ícones, etc.)
+```

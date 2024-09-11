@@ -3,8 +3,8 @@
 import * as React from "react"
 import {
     CaretSortIcon,
-    ChevronDownIcon,
     DotsHorizontalIcon,
+    PlusIcon,
 } from "@radix-ui/react-icons"
 import {
     ColumnDef,
@@ -22,7 +22,6 @@ import {
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
@@ -38,6 +37,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import Link from "next/link"
 
 type Vehicle = {
     id: number;
@@ -174,7 +174,7 @@ export function VehicleDataTable({ data }: VehicleDataTable) {
 
     return (
         <div className="w-full">
-            <div className="flex items-center py-4">
+            <div className="flex items-center justify-between py-4">
                 <Input
                     placeholder="Filtrar montadora..."
                     value={(table.getColumn("automaker")?.getFilterValue() as string) ?? ""}
@@ -183,32 +183,10 @@ export function VehicleDataTable({ data }: VehicleDataTable) {
                     }
                     className="max-w-sm"
                 />
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
-                            Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        {table
-                            .getAllColumns()
-                            .filter((column) => column.getCanHide())
-                            .map((column) => {
-                                return (
-                                    <DropdownMenuCheckboxItem
-                                        key={column.id}
-                                        className="capitalize"
-                                        checked={column.getIsVisible()}
-                                        onCheckedChange={(value) =>
-                                            column.toggleVisibility(!!value)
-                                        }
-                                    >
-                                        {column.id}
-                                    </DropdownMenuCheckboxItem>
-                                )
-                            })}
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <Link href={"/app/vehicles/new"} className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 p-2 gap-2 bg-primary text-primary-foreground shadow hover:bg-primary/90'>
+                    <PlusIcon />
+                    Cadastrar
+                </Link>
             </div>
             <div className="rounded-md border">
                 <Table>
@@ -272,7 +250,7 @@ export function VehicleDataTable({ data }: VehicleDataTable) {
                         onClick={() => table.previousPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
-                        Previous
+                        Voltar
                     </Button>
                     <Button
                         variant="outline"
@@ -280,7 +258,7 @@ export function VehicleDataTable({ data }: VehicleDataTable) {
                         onClick={() => table.nextPage()}
                         disabled={!table.getCanNextPage()}
                     >
-                        Next
+                        Próximo
                     </Button>
                 </div>
             </div>

@@ -66,7 +66,7 @@ export function ThemeForm() {
 													</div>
 												</div>
 												<span className="block w-full p-2 text-center font-normal">
-													Light
+													Claro
 												</span>
 											</FormLabel>
 										</FormItem>
@@ -92,7 +92,7 @@ export function ThemeForm() {
 													</div>
 												</div>
 												<span className="block w-full p-2 text-center font-normal">
-													Dark
+													Escuro
 												</span>
 											</FormLabel>
 										</FormItem>
@@ -103,8 +103,8 @@ export function ThemeForm() {
 					</CardContent>
 				</Card>
 				<Button disabled={form.formState.isSubmitting} type="submit">
-					{form.formState.isSubmitting && "Saving..."}
-					{!form.formState.isSubmitting && "Save changes"}
+					{form.formState.isSubmitting && "Salvando..."}
+					{!form.formState.isSubmitting && "Salvar"}
 				</Button>
 			</form>
 		</Form >)
