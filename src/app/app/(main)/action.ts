@@ -2,10 +2,6 @@
 
 import { config } from "@/config"
 
-type ServiceOrder = {
-    id: string
-}
-
 export const getServiceOrders = async () => {
     const apiUrl = config.api.url
     try {

@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   ExitIcon,
-  MixerVerticalIcon,
   PersonIcon
 } from "@radix-ui/react-icons";
 import { Session } from "next-auth";
