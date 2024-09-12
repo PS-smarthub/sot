@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,8 +9,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
-  LockClosedIcon,
+  ExitIcon,
   MixerVerticalIcon,
+  PersonIcon
 } from "@radix-ui/react-icons";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
@@ -29,13 +29,6 @@ export function UserDropdown({ user }: UserdropdwonProps) {
           variant="link"
           className="relative h-8 flex items-center justify-between w-full !px-0 space-x-2"
         >
-          <Avatar className="h-8 w-8">
-            <AvatarImage
-              src={user?.image as string}
-              alt={user?.name as string}
-            />
-            <AvatarFallback>U</AvatarFallback>
-          </Avatar>
           <div className="flex flex-col space-y-1 max-w-max truncate flex-1 text-left">
             {user.name && (
               <p className="text-sm font-medium leading-none">{user.name}</p>
@@ -46,7 +39,7 @@ export function UserDropdown({ user }: UserdropdwonProps) {
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 truncate" align="end" forceMount>
+      <DropdownMenuContent className="w-56 truncate dark:bg-[#1a1a1a]" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none truncate">{user.name}</p>
@@ -58,14 +51,14 @@ export function UserDropdown({ user }: UserdropdwonProps) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <MixerVerticalIcon className="w-3 h-3 mr-3" />
-            Configurações
+            <PersonIcon className="w-3 h-3 mr-3" />
+            Meu perfil
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="bg-zinc-700" />
         <DropdownMenuItem onClick={() => signOut()}>
-          <LockClosedIcon className="w-3 h-3 mr-3" />
-          Log out
+          <ExitIcon className="w-3 h-3 mr-3" />
+          Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

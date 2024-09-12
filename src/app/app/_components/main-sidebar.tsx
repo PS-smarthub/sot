@@ -6,8 +6,6 @@ import {
   SidebarHeader,
   SidebarMain,
   SidebarNav,
-  SidebarNavHeader,
-  SidebarNavHeaderTitle,
   SidebarNavLink,
   SidebarNavMain,
 } from '@/components/dashboard/sidebar'
@@ -53,16 +51,6 @@ export function MainSidebar({ user }: MainSidebarProps) {
               <MixerVerticalIcon className="w-4 h-4 mr-3" />
               Configurações
             </SidebarNavLink>
-          </SidebarNavMain>
-        </SidebarNav>
-
-        <SidebarNav className="mt-auto">
-          <SidebarNavHeader>
-            <SidebarNavHeaderTitle>Links extras</SidebarNavHeaderTitle>
-          </SidebarNavHeader>
-          <SidebarNavMain>
-            <SidebarNavLink href="/">Precisa de ajuda?</SidebarNavLink>
-            <SidebarNavLink href="/">Site</SidebarNavLink>
           </SidebarNavMain>
         </SidebarNav>
       </SidebarMain>

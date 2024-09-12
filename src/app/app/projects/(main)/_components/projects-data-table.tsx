@@ -2,9 +2,7 @@
 
 import * as React from "react"
 import {
-    CaretSortIcon,
     PlusIcon,
-    Pencil2Icon
 } from "@radix-ui/react-icons"
 import {
     ColumnDef,
@@ -29,89 +27,63 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import Link from "next/link"
-import { EditVehicleDialog } from "./edit-vehicle-dialog"
+import { Badge } from "@/components/ui/badge"
+import { NewProjectDialog } from "./new-project-dialog"
 
-type Vehicle = {
+type Project = {
     id: number;
-    automaker: string;
-    project: string;
-    responsible: string;
-    model: string;
-    color: string;
-    chassis: string;
-    fleet: string | null;
-    comments: string | null;
-    image: string | null;
-    nf_number: string;
-    nf_emission_date: string;
-    loan_expiration_date: string;
+    name: string;
+    number: string;
+    description: string;
+    client: string;
+    motor: string;
+    motorFamily: string;
+    injection: string;
+    aspiration: string;
+    fuel: string;
+    gearBox: string;
+    powertrain: string;
+    market: string;
+    legislation: string;
+    cicle: string;
+    diagnose: string;
+    status: string;
 };
-export const columns: ColumnDef<Vehicle>[] = [
+export const columns: ColumnDef<Project>[] = [
     {
-        accessorKey: "automaker",
-        header: "Montadora",
+        accessorKey: "status",
+        header: "Status",
         cell: ({ row }) => {
-            const { automaker } = row.original
-
-            return <div>{automaker}</div>
+            const { status } = row.original
+            const isDone = status === "Finalizado"
+            return <Badge variant={isDone ? "secondary" : "outline"}>{status}</Badge>
         }
     },
     {
-        accessorKey: "model",
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="link"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Modelo
-                    <CaretSortIcon className="ml-2 h-4 w-4" />
-                </Button>
-            )
-        },
-        cell: ({ row }) => <div>{row.getValue("model")}</div>,
-    },
-    {
-        accessorKey: "chassis",
-        header: () => <div className="text-right">Chassi</div>,
+        accessorKey: "name",
+        header: () => <div>Nome</div>,
         cell: ({ row }) => {
+            const { name } = row.original
 
-
-            return <div className="text-right font-medium">{row.original.chassis}</div>
+            return <div className="text-left font-medium">{name}</div>
         },
     },
     {
-        id: "actions",
-        enableHiding: false,
+        accessorKey: "number",
+        header: () => <div>Número</div>,
         cell: ({ row }) => {
-            const vehicle = row.original
+            const { number } = row.original
 
-            // const handleDeleteVehicle = async (todo: Todo) => {
-            //     await deleteTodo({
-            //         id: todo.id
-            //     })
-            //     toast({
-            //         title: "Deletion Successful",
-            //         description: "The todo item has been successfully deleted."
-            //     })
-            // }
-            return (
-                <EditVehicleDialog vehicle={vehicle}>
-                    <Button variant="ghost">
-                        <Pencil2Icon className="w-4 h-4" />
-                    </Button>
-                </EditVehicleDialog>
-            )
+            return <div className="text-left font-medium">{number}</div>
         },
     },
 ]
 
 type VehicleDataTable = {
-    data: Vehicle[]
+    data: Project[]
 }
 
-export function VehicleDataTable({ data }: VehicleDataTable) {
+export function ProjectsDataTable({ data }: VehicleDataTable) {
 
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -144,17 +116,20 @@ export function VehicleDataTable({ data }: VehicleDataTable) {
         <div className="w-full">
             <div className="flex items-center justify-between py-4">
                 <Input
-                    placeholder="Filtrar montadora..."
-                    value={(table.getColumn("automaker")?.getFilterValue() as string) ?? ""}
+                    placeholder="Filtrar projeto por nome..."
+                    value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("automaker")?.setFilterValue(event.target.value)
+                        table.getColumn("name")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
-                <Link href={"/app/vehicles/new"} className='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 p-2 gap-2 bg-primary text-primary-foreground shadow hover:bg-primary/90'>
-                    <PlusIcon />
-                    Cadastrar
-                </Link>
+                <NewProjectDialog>
+                    <Button className="gap-2">
+                        <PlusIcon className="w-4 h-4" />
+                        Novo
+                    </Button>
+                </NewProjectDialog>
+
             </div>
             <div className="rounded-md border">
                 <Table>
