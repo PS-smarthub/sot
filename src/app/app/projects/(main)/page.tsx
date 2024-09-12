@@ -1,14 +1,7 @@
-import { DashboardPage, DashboardPageHeader, DashboardPageHeaderTitle, DashboardPageMain } from '@/components/dashboard/page'
+import { ProjectsDataTable } from './_components/projects-data-table';
+import { getProjects } from './actions';
 
-export default function Page() {
-  return (
-    <DashboardPage>
-      <DashboardPageHeader>
-        <DashboardPageHeaderTitle>Projetos</DashboardPageHeaderTitle>
-      </DashboardPageHeader>
-      <DashboardPageMain>
-        Projetos
-      </DashboardPageMain>
-    </DashboardPage>
-  )
+export default async function Page() {
+  const projects = await getProjects()
+  return <ProjectsDataTable data={projects} />
 }
