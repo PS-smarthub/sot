@@ -2,14 +2,10 @@ name: CI Workflow
 
 on:
   push:
-    branches:
-      - main
-      - "release/*"
-      - dev
+    branches: ["main", "dev"]
+    
   pull_request:
-    branches:
-      - main
-      - dev
+    branches: ["main", "dev"]
 
 jobs:
   lint:
