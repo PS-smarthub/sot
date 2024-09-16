@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -21,6 +23,7 @@ type UserdropdwonProps = {
 
 export function UserDropdown({ user }: UserdropdwonProps) {
   if (!user) return;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -77,7 +77,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
             <DialogTrigger asChild>
                 <div ref={ref}>{children}</div>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="dark:bg-[#1a1a1a]">
                 <DialogHeader>
                     <DialogTitle>Criar um novo projeto</DialogTitle>
                     <DialogDescription>Crie um novo projeto.</DialogDescription>
@@ -101,7 +101,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                         <FormItem>
                                             <FormLabel>Nome</FormLabel>
                                             <FormControl>
-                                                <Input {...field} />
+                                                <Input {...field} placeholder="Projeto novo" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -114,7 +114,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                         <FormItem>
                                             <FormLabel>Número</FormLabel>
                                             <FormControl>
-                                                <Input {...field} />
+                                                <Input {...field} placeholder="BM-000000001" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -127,7 +127,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                         <FormItem>
                                             <FormLabel>Descritivo (Opcional)</FormLabel>
                                             <FormControl>
-                                                <Textarea {...field} />
+                                                <Textarea {...field} placeholder="Breve descrição sobre o projeto..." />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -140,7 +140,15 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                         <FormItem>
                                             <FormLabel>Cliente</FormLabel>
                                             <FormControl>
-                                                <Input {...field} />
+                                                <Select required onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Selecione o cliente..." />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="Bosch BR">Bosch BR</SelectItem>
+                                                        <SelectItem value="Toyota">Toyota</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -153,7 +161,15 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                         <FormItem>
                                             <FormLabel>Motor</FormLabel>
                                             <FormControl>
-                                                <Input {...field} />
+                                                <Select required onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Selecione o motor..." />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="Motor 1">Motor 2</SelectItem>
+                                                        <SelectItem value="Motor 2">Motor 1</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -207,7 +223,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de injeção" />
+                                                        <SelectValue placeholder="Selecione o tipo de aspiração" />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
@@ -224,11 +240,11 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                     name="fuel"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Fuel</FormLabel>
+                                            <FormLabel>Combustível</FormLabel>
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de combustível" />
+                                                        <SelectValue placeholder="Selecione o tipo de combustível..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="gasolina">Gasolina</SelectItem>
@@ -251,7 +267,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de câmbio" />
+                                                        <SelectValue placeholder="Selecione o tipo de câmbio..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="teste">Teste</SelectItem>
@@ -276,7 +292,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de injeção" />
+                                                        <SelectValue placeholder="Selecione o tipo de injeção..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
@@ -297,7 +313,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o mercado" />
+                                                        <SelectValue placeholder="Selecione o mercado..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
@@ -318,7 +334,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione a legislação" />
+                                                        <SelectValue placeholder="Selecione a legislação..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
@@ -339,7 +355,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de injeção" />
+                                                        <SelectValue placeholder="Selecione o ciclo..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
@@ -360,7 +376,7 @@ export function NewProjectDialog({ children }: PropsWithChildren) {
                                             <FormControl>
                                                 <Select required onValueChange={field.onChange} value={field.value}>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Selecione o tipo de injeção" />
+                                                        <SelectValue placeholder="Selecione a diagnose..." />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="direta">Simples</SelectItem>
