@@ -27,7 +27,6 @@ export const createNewProject = async (data: FormDataCreateProject) => {
 }
 
 export const getProjects = async () => {
-
     try {
         const response = await fetch(`${config.api.url}/projects`, {
             cache: "no-cache"

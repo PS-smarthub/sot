@@ -19,8 +19,9 @@ export function SignInForm() {
                             Login para funcionários
                         </h2>
                     </div>
-                    <Button className="w-full" type='submit' variant="default">
-                        Bosch Login
+                    <Button className="w-full" type='submit' variant="default" disabled={form.formState.isSubmitting}>
+                        {form.formState.isSubmitting && "Entrando..."}
+                        {!form.formState.isSubmitting && "Bosch Login"}
                     </Button>
                 </form>
             </div>

@@ -1,14 +1,12 @@
 "use client"
 
-import { DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Dialog } from "@radix-ui/react-dialog";
+import { DialogContent, DialogTrigger, Dialog } from "@/components/ui/dialog";
 import { useRef } from "react";
 
 type EditVehicleDialogProps = {
     children?: React.ReactNode,
     vehicle: {
         automaker: string
-
     }
 }
 

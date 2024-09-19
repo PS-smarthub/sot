@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   ExitIcon,
-  MixerVerticalIcon,
   PersonIcon
 } from "@radix-ui/react-icons";
 import { Session } from "next-auth";
@@ -22,6 +23,7 @@ type UserdropdwonProps = {
 
 export function UserDropdown({ user }: UserdropdwonProps) {
   if (!user) return;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
