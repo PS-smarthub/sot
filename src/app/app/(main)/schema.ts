@@ -33,3 +33,18 @@ export const createNewWorkshopServiceOrderSchema = z.object({
 });
 
 export type CreateNewWorkshopServiceOrder = z.infer<typeof createNewWorkshopServiceOrderSchema>
+
+export const washingServiceOrderSchema = z.object({
+    id: z.string().optional(),
+    automaker: z.string(),
+    project: z.string(),
+    model: z.string(),
+    chassis: z.string(),
+    fleet: z.string(),
+    vehicleLocation: z.string(),
+    keyLocation: z.string(),
+    status: z.string(),
+    requestedBy: z.string(),
+})
+
+export type WashingServiceOrder = z.infer<typeof washingServiceOrderSchema>
